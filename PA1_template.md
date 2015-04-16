@@ -16,8 +16,9 @@ library(ggplot2)
 
 
 ```r
-activity <- read.csv(file = "g://_Coursera//Reproducible Research//activity.csv", sep = ",", header = TRUE,
-                        colClasses=c("numeric", "Date", "numeric"))
+activity <- read.csv(file = "g://_Coursera//Reproducible Research//activity.csv",
+                     sep = ",", header = TRUE,
+                     colClasses=c("numeric", "Date", "numeric"))
 ```
 
 
@@ -30,7 +31,8 @@ activity <- read.csv(file = "g://_Coursera//Reproducible Research//activity.csv"
 activity.aggrDate <- activity %>% filter(steps >= 0) %>% group_by(date) %>%
         summarise(steps.total = sum(steps))
 
-ggplot(activity.aggrDate, aes(x = steps.total)) + geom_histogram(color = "blue", fill = "lightblue", binwidth = 800) + 
+ggplot(activity.aggrDate, aes(x = steps.total)) + 
+        geom_histogram(color = "blue", fill = "lightblue", binwidth = 800) + 
         labs(title="Histogram of the total number of steps taken per day",
                x = "Number of Steps per Day")
 ```
@@ -41,7 +43,7 @@ ggplot(activity.aggrDate, aes(x = steps.total)) + geom_histogram(color = "blue",
 
 
 ```r
-steps.mean   <- as.character(round(mean(activity.aggrDate$steps.total), digits = 2))
+steps.mean <- as.character(round(mean(activity.aggrDate$steps.total), digits = 2))
 steps.median <- as.character(median(activity.aggrDate$steps.total))
 ```
 
@@ -111,7 +113,8 @@ the mean and median total number of steps taken per day.
 ```r
 activity.noNA.aggrDate <- activity.noNA %>% filter(steps >= 0) %>% group_by(date) %>%
         summarise(steps.total = sum(steps))
-ggplot(activity.noNA.aggrDate, aes(x = steps.total)) + geom_histogram(color = "blue", fill = "lightblue", binwidth = 800) + 
+ggplot(activity.noNA.aggrDate, aes(x = steps.total)) + 
+        geom_histogram(color = "blue", fill = "lightblue", binwidth = 800) + 
         labs(title="Histogram of the total number of steps taken per day",
                x = "Number of Steps per Day")
 ```
@@ -121,7 +124,7 @@ ggplot(activity.noNA.aggrDate, aes(x = steps.total)) + geom_histogram(color = "b
 
 
 ```r
-steps.mean   <- as.character(round(mean(activity.noNA.aggrDate$steps.total), digits = 2))
+steps.mean <- as.character(round(mean(activity.noNA.aggrDate$steps.total), digits = 2))
 steps.median <- as.character(median(activity.noNA.aggrDate$steps.total))
 ```
 
